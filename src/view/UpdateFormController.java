@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import controller.CustomerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import model.Customer;
 
@@ -51,33 +52,19 @@ public class UpdateFormController {
         String town = txtTown.getText();
         double salary = Double.parseDouble(txtSalary.getText()); //"25000" ---> 25000
 
-        try {
-            //java app + mysql connect karana connector load
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        Customer customer = new Customer();
+        customer.setCid(id);
+        customer.setName(name);
+        customer.setTown(town);
+        customer.setSalary(salary);
 
-            //create a connection with database
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo",
-                    "root","yasindu@ijse");
+        boolean isUpdated = CustomerController.updateCustomer(customer);
 
-            PreparedStatement stm = connection.prepareStatement("update customer set name=?,town=?,Salary=? where cid=?");
-
-            stm.setObject(1,name);
-            stm.setObject(2,town);
-            stm.setObject(3,salary);
-            stm.setObject(4,id);
-
-            int result = stm.executeUpdate();
-
-            if(result==1){
-                clear();
-            }
-
-            System.out.println(result);
-
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if(isUpdated){
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("Customer Updated");
+            a.show();
+            clear();
         }
     }
 }

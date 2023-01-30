@@ -12,7 +12,33 @@ public class CustomerController {
     }
 
     //for update customer
-    public static boolean updateCustomer(){
+    public static boolean updateCustomer(Customer customer){
+        try {
+            //java app + mysql connect karana connector load
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //create a connection with database
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo",
+                    "root","yasindu@ijse");
+
+            PreparedStatement stm = connection.prepareStatement("update customer set name=?,town=?,Salary=? where cid=?");
+
+            stm.setObject(1,customer.getName());
+            stm.setObject(2,customer.getTown());
+            stm.setObject(3,customer.getSalary());
+            stm.setObject(4,customer.getCid());
+
+            int result = stm.executeUpdate();
+
+            if(result>0){
+                return true;
+            }
+
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return false;
     }
 
