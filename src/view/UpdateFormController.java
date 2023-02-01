@@ -4,13 +4,22 @@ import com.jfoenix.controls.JFXTextField;
 import controller.CustomerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.Customer;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class UpdateFormController {
+    @FXML
+    private AnchorPane root;
+
     @FXML
     private JFXTextField txtSeachId;
 
@@ -65,6 +74,20 @@ public class UpdateFormController {
             a.setContentText("Customer Updated");
             a.show();
             clear();
+        }
+    }
+
+    @FXML
+    void onBack(ActionEvent event) {
+        try {
+            Parent view = FXMLLoader.load(this.getClass().getResource("MainForm.fxml"));
+
+            Stage primaryStage = (Stage) root.getScene().getWindow();
+            Scene scene = new Scene(view);
+            primaryStage.setScene(scene);
+            primaryStage.centerOnScreen();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

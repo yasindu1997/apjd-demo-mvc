@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="459.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UpdateFormController">
+<AnchorPane fx:id="root" prefHeight="459.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UpdateFormController">
     <children>
         <JFXTextField fx:id="txtSeachId" labelFloat="true" layoutX="66.0" layoutY="106.0" prefHeight="27.0" prefWidth="300.0" promptText="Enter Customer ID" />
         <JFXButton layoutX="455.0" layoutY="106.0" onAction="#search" style="-fx-background-color: brown;" text="Search" textFill="WHITE" />
@@ -26,5 +25,6 @@
         <TextField fx:id="txtSalary" layoutX="170.0" layoutY="348.0" prefHeight="27.0" prefWidth="196.0" />
         <Label layoutX="66.0" layoutY="353.0" text="Customer Salary" />
         <JFXButton layoutX="456.0" layoutY="269.0" onAction="#update" style="-fx-background-color: green;" text="Update Customer" textFill="WHITE" />
+      <JFXButton layoutX="28.0" layoutY="23.0" onAction="#onBack" prefHeight="27.0" prefWidth="42.0" text="&lt;-" />
     </children>
 </AnchorPane>

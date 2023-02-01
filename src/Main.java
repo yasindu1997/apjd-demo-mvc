@@ -11,11 +11,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent parent = FXMLLoader.load(this.getClass().getResource("./view/UpdateForm.fxml"));
+        Parent parent = FXMLLoader.load(this.getClass().getResource("./view/MainForm.fxml"));
         Scene loginScene = new Scene(parent);
 
         primaryStage.setScene(loginScene);
-        primaryStage.setTitle("Customer's Update Form");
+        primaryStage.setTitle("Main Form");
         primaryStage.centerOnScreen();
         primaryStage.setResizable(false);
         primaryStage.show();
