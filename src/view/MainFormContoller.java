@@ -60,10 +60,23 @@ public class MainFormContoller {
 
     @FXML
     void loadAll(ActionEvent event) {
-        ArrayList<Customer> customers = CustomerController.loadAllCustomer();
 
-        for(Customer cus : customers){
-            System.out.println(cus.getCid()+" "+cus.getName()+" "+cus.getTown());
+        try {
+            //load update fxml
+            Parent view = FXMLLoader.load(this.getClass().getResource("LoadAllForm.fxml"));
+
+            //catch main stage / primary stage
+            Stage primaryStage = (Stage) root.getScene().getWindow();
+
+            //create a scene
+            Scene scene = new Scene(view);
+
+            //set scene to the stage
+            primaryStage.setScene(scene);
+            primaryStage.centerOnScreen();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
     }
 }

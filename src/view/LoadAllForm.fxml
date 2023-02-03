@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoadAllFormController">
+   <children>
+      <TableView fx:id="tblCustomers" layoutX="36.0" layoutY="100.0" prefHeight="269.0" prefWidth="520.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="152.0" text="Name" />
+            <TableColumn fx:id="colTown" prefWidth="141.0" text="Town" />
+            <TableColumn fx:id="colSalary" prefWidth="151.0" text="Salary" />
+        </columns>
+      </TableView>
+      <Label layoutX="219.0" layoutY="38.0" prefHeight="30.0" prefWidth="154.0" text="All Customers">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
