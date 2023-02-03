@@ -1,5 +1,6 @@
 package view;
 
+import controller.CustomerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,8 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Customer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainFormContoller {
 
@@ -52,6 +55,15 @@ public class MainFormContoller {
             primaryStage.centerOnScreen();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void loadAll(ActionEvent event) {
+        ArrayList<Customer> customers = CustomerController.loadAllCustomer();
+
+        for(Customer cus : customers){
+            System.out.println(cus.getCid()+" "+cus.getName()+" "+cus.getTown());
         }
     }
 }

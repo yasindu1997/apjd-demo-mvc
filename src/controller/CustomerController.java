@@ -3,6 +3,7 @@ package controller;
 import model.Customer;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class CustomerController {
 
@@ -81,5 +82,39 @@ public class CustomerController {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public static ArrayList<Customer> loadAllCustomer(){
+        try {
+            //java app + mysql connect karana connector load
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //create a connection with database
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo",
+                    "root","yasindu@ijse");
+
+            PreparedStatement stm = connection.prepareStatement("select * from customer");
+
+            ResultSet result = stm.executeQuery();
+
+            ArrayList<Customer> customers = new ArrayList<>();
+
+            while(result.next()){
+                Customer customer= new Customer();
+
+                customer.setCid(result.getString(1));
+                customer.setName(result.getString(2));
+                customer.setTown(result.getString(3));
+                customer.setSalary(result.getDouble(4));
+
+                customers.add(customer);
+            }
+
+            return customers;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
