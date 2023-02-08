@@ -4,16 +4,20 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import controller.CustomerController;
 import controller.ItemController;
+import controller.OrderController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import model.Customer;
 import model.Item;
+import model.Order;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -40,6 +44,9 @@ public class OrderFormController implements Initializable {
     private JFXTextField txtQty;
 
     @FXML
+    private TextField txtOderId;
+
+    @FXML
     void onSelectCustomer(ActionEvent event) {
         Customer customer = CustomerController.searchCustomer((String) cmbCustomer.getValue());
         lblName.setText(customer.getName());
@@ -55,7 +62,19 @@ public class OrderFormController implements Initializable {
 
     @FXML
     void order(ActionEvent event) {
+        String qty = txtQty.getText();
+        String oid = txtOderId.getText();
+        String iid = (String)cmbItem.getValue();
 
+        Order order = new Order();
+        order.setOid(oid);
+        order.setCid((String) cmbCustomer.getValue());
+        order.setOrderDate(String.valueOf(LocalDate.now()));
+
+        System.out.println(iid+" "+order.getOrderDate());
+
+        boolean isPlacedOrder = OrderController.placeOrder(order,qty,iid);
+        System.out.println(isPlacedOrder);
     }
 
     @Override

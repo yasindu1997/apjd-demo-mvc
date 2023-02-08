@@ -16,3 +16,5 @@ create table orders(
     constraint primary key(oid),
     constraint foreign key (cus_id) references customer(cid)
 );
+
+insert into orders('o001','2023-02-08','C02');
