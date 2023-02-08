@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.OrderFormController">
+   <children>
+      <Label layoutX="248.0" layoutY="33.0" text="Order Form">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <JFXComboBox fx:id="cmbCustomer" layoutX="66.0" layoutY="105.0" onAction="#onSelectCustomer" prefHeight="27.0" prefWidth="127.0" promptText="Select Customer" />
+      <JFXComboBox fx:id="cmbItem" layoutX="66.0" layoutY="173.0" onAction="#onSelectItem" prefHeight="27.0" prefWidth="127.0" promptText="Select Item" />
+      <Label layoutX="269.0" layoutY="119.0" text="Name : " />
+      <Label layoutX="429.0" layoutY="119.0" text="Salary :  " />
+      <Label layoutX="269.0" layoutY="188.0" text="Name : " />
+      <Label layoutX="434.0" layoutY="192.0" text="QTY :  " />
+      <Label fx:id="lblName" layoutX="331.0" layoutY="119.0" prefHeight="17.0" prefWidth="82.0" />
+      <Label fx:id="lblItemName" layoutX="333.0" layoutY="188.0" prefHeight="17.0" prefWidth="74.0" />
+      <Label fx:id="lblSalary" layoutX="498.0" layoutY="119.0" prefHeight="17.0" prefWidth="74.0" />
+      <Label fx:id="lblItemQty" layoutX="498.0" layoutY="190.0" prefHeight="17.0" prefWidth="74.0" />
+      <JFXButton layoutX="250.0" layoutY="306.0" onAction="#order" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: green;" text="Place Order" textFill="WHITE" />
+      <JFXTextField fx:id="txtQty" layoutX="269.0" layoutY="258.0" prefHeight="27.0" prefWidth="82.0" promptText="Enter QTY" />
+   </children>
+</AnchorPane>

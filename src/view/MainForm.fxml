@@ -9,5 +9,6 @@
       <Button layoutX="217.0" layoutY="60.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="63.0" prefWidth="128.0" text="Customer Update" />
       <Button layoutX="392.0" layoutY="60.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="63.0" prefWidth="136.0" text="Customer Delete" />
       <Button layoutX="44.0" layoutY="169.0" mnemonicParsing="false" onAction="#loadAll" prefHeight="63.0" prefWidth="136.0" text="Load All Customers" />
+      <Button layoutX="217.0" layoutY="169.0" mnemonicParsing="false" onAction="#order" prefHeight="63.0" prefWidth="136.0" text="Place Order" />
    </children>
 </AnchorPane>
