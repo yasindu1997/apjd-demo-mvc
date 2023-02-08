@@ -117,4 +117,31 @@ public class CustomerController {
             throw new RuntimeException(e);
         }
     }
+
+    public static ArrayList<String> loadCustomerIds(){
+        try {
+            //java app + mysql connect karana connector load
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //create a connection with database
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo",
+                    "root","yasindu@ijse");
+
+            PreparedStatement stm = connection.prepareStatement("select cid from customer");
+
+            ResultSet result = stm.executeQuery();
+
+            ArrayList<String> customerIds = new ArrayList<>();
+
+            while(result.next()){
+                customerIds.add(result.getString(1));
+            }
+
+            return customerIds;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
