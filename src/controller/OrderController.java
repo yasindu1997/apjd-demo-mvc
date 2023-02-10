@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class OrderController {
-    public static boolean placeOrder(Order order, String qty, String iid){
+    public static boolean placeOrder(Order order){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -29,8 +29,8 @@ public class OrderController {
             if(orderAdded>0){
                 PreparedStatement stm2 = connection.prepareStatement("update item set qty=? where iid=?");
 
-                stm2.setObject(1,Integer.parseInt(qty));
-                stm2.setObject(2,iid);
+                stm2.setObject(1,order.getQty());
+                stm2.setObject(2,order.getIid());
 
                 int itemUpdate = stm2.executeUpdate();
 

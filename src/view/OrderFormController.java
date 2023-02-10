@@ -70,10 +70,10 @@ public class OrderFormController implements Initializable {
         order.setOid(oid);
         order.setCid((String) cmbCustomer.getValue());
         order.setOrderDate(String.valueOf(LocalDate.now()));
+        order.setQty(Integer.parseInt(qty));
+        order.setIid(iid);
 
-        System.out.println(iid+" "+order.getOrderDate());
-
-        boolean isPlacedOrder = OrderController.placeOrder(order,qty,iid);
+        boolean isPlacedOrder = OrderController.placeOrder(order);
         System.out.println(isPlacedOrder);
     }
 

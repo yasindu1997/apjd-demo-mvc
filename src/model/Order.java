@@ -4,6 +4,8 @@ public class Order {
     private String oid;
     private String orderDate;
     private String cid;
+    private int qty;
+    private String iid;
 
     public String getOid() {
         return oid;
@@ -27,5 +29,21 @@ public class Order {
 
     public void setCid(String cid) {
         this.cid = cid;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public String getIid() {
+        return iid;
+    }
+
+    public void setIid(String iid) {
+        this.iid = iid;
     }
 }
